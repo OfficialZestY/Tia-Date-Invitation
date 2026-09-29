@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Tia ♡</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: elegant, romantic, but clean -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bg-decor">
+    <div class="star s1"></div>
+    <div class="star s2"></div>
+    <div class="star s3"></div>
+    <div class="heart h1"></div>
+    <div class="heart h2"></div>
+  </div>
+
+  <main class="container">
+    <!-- LANDING -->
+    <section id="landing" class="card fade-in">
+      <h1 class="title">Tia, you’ve officially been invited.</h1>
+      <p class="subtitle">To one unnecessarily elaborate virtual date. 🎬♡</p>
+      <button id="startBtn" class="btn primary">Plan our date</button>
+    </section>
+
+    <!-- DATE PLANNER -->
+    <section id="planner" class="card hidden">
+      <h2 class="section-title">Plan our date</h2>
+
+      <!-- Custom Date Picker -->
+      <div class="date-picker-wrapper">
+        <div class="date-picker-header">
+          <button id="prevMonth" class="icon-btn" aria-label="Previous month">‹</button>
+          <div id="currentMonthLabel" class="current-month-label"></div>
+          <button id="nextMonth" class="icon-btn" aria-label="Next month">›</button>
+        </div>
+
+        <div class="date-picker-grid">
+          <div class="weekday">Su</div>
+          <div class="weekday">Mo</div>
+          <div class="weekday">Tu</div>
+          <div class="weekday">We</div>
+          <div class="weekday">Th</div>
+          <div class="weekday">Fr</div>
+          <div class="weekday">Sa</div>
+          <div id="calendarDays" class="calendar-days"></div>
+        </div>
+      </div>
+
+      <!-- Time -->
+      <div class="field-group">
+        <label for="timeInput">🕐 Time</label>
+        <input type="time" id="timeInput" required />
+      </div>
+
+      <!-- Movie -->
+      <div class="field-group">
+        <label for="movieInput">🎬 Movie</label>
+        <input
+          type="text"
+          id="movieInput"
+          placeholder="e.g. La La Land, Pride & Prejudice..."
+          required
+        />
+      </div>
+
+      <!-- Optional note -->
+      <div class="field-group">
+        <label for="noteInput">💌 Optional note/message</label>
+        <textarea
+          id="noteInput"
+          rows="3"
+          placeholder="Say something sweet (or silly)..."
+        ></textarea>
+      </div>
+
+      <button id="reviewBtn" class="btn primary">Continue</button>
+    </section>
+
+    <!-- REVIEW & CONFIRM -->
+    <section id="review" class="card hidden">
+      <h2 class="section-title">One last thing…</h2>
+
+      <div class="summary-card">
+        <div class="summary-row">
+          <span class="label">Date</span>
+          <span id="summaryDate" class="value"></span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Time</span>
+          <span id="summaryTime" class="value"></span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Movie</span>
+          <span id="summaryMovie" class="value"></span>
+        </div>
+        <div class="summary-row" id="summaryNoteRow" style="display:none;">
+          <span class="label">Note</span>
+          <span id="summaryNote" class="value"></span>
+        </div>
+      </div>
+
+      <!-- FORMSPREE FORM (your endpoint inserted) -->
+      <form
+        id="dateForm"
+        action="https://formspree.io/f/moevrkjj"
+        method="POST"
+      >
+        <!-- Hidden fields to send to email -->
+        <input type="hidden" name="Selected date" id="formDate" />
+        <input type="hidden" name="Selected time" id="formTime" />
+        <input type="hidden" name="Selected movie" id="formMovie" />
+        <input type="hidden" name="Optional message" id="formNote" />
+        <input type="hidden" name="Submission timestamp" id="formTimestamp" />
+
+        <button type="submit" id="confirmBtn" class="btn primary">
+          Confirm our date ♡
+        </button>
+      </form>
+    </section>
+
+    <!-- CONFIRMED -->
+    <section id="confirmed" class="card hidden">
+      <h2 class="title">It’s a date. Officially. ❤️</h2>
+      <p class="subtitle">I’ll see you there, even if it’s through a screen.</p>
+
+      <div id="countdownWrapper" class="countdown-wrapper">
+        <div class="countdown-label">Our date starts in:</div>
+        <div id="countdown" class="countdown">--:--:--</div>
+      </div>
+
+      <p class="small-note">I got your response. Get ready. 🎬✨</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
